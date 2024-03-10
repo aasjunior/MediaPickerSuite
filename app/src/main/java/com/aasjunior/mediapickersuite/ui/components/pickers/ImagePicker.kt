@@ -1,4 +1,4 @@
-package com.aasjunior.mediapickersuite.ui.components
+package com.aasjunior.mediapickersuite.ui.components.pickers
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
