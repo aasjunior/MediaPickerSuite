@@ -7,7 +7,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.aasjunior.mediapickersuite.ui.components.form.inputs.PhoneTextField
 import com.aasjunior.mediapickersuite.ui.components.pickers.DocumentPicker
 import com.aasjunior.mediapickersuite.ui.components.pickers.ImagePicker
 import com.aasjunior.mediapickersuite.ui.components.pickers.VideoPicker
@@ -27,7 +32,17 @@ class MainActivity : ComponentActivity() {
                         ImagePicker()
                         VideoPicker()
                         DocumentPicker()
+
+                        var phone by rememberSaveable { mutableStateOf("") }
+
+                        PhoneTextField(
+                            phone = phone,
+                            onValueChange = { newPhone ->
+                                phone = newPhone
+                            }
+                        )
                     }
+                    
                 }
             }
         }
