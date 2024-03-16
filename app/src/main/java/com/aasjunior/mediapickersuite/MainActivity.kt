@@ -13,7 +13,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.aasjunior.mediapickersuite.ui.components.form.inputs.ConfirmPassword
 import com.aasjunior.mediapickersuite.ui.components.form.inputs.EmailTextField
+import com.aasjunior.mediapickersuite.ui.components.form.inputs.PasswordTextField
 import com.aasjunior.mediapickersuite.ui.components.form.inputs.PhoneTextField
 import com.aasjunior.mediapickersuite.ui.components.pickers.DocumentPicker
 import com.aasjunior.mediapickersuite.ui.components.pickers.ImagePicker
@@ -38,6 +40,7 @@ class MainActivity : ComponentActivity() {
 
                         var phone by rememberSaveable { mutableStateOf("") }
                         var email by rememberSaveable { mutableStateOf("") }
+                        var password by rememberSaveable { mutableStateOf("") }
 
                         PhoneTextField(
                             phone = phone,
@@ -47,6 +50,12 @@ class MainActivity : ComponentActivity() {
                             email = email,
                             onValueChange = { newEmail -> email = newEmail }
                         )
+                        PasswordTextField(
+                            password = password,
+                            onValueChange = { newPassword -> password = newPassword }
+                        )
+
+                        ConfirmPassword()
                     }
                     
                 }
