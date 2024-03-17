@@ -20,6 +20,7 @@ import com.aasjunior.mediapickersuite.ui.components.form.inputs.PhoneTextField
 import com.aasjunior.mediapickersuite.ui.components.pickers.DocumentPicker
 import com.aasjunior.mediapickersuite.ui.components.pickers.ImagePicker
 import com.aasjunior.mediapickersuite.ui.components.pickers.VideoPicker
+import com.aasjunior.mediapickersuite.ui.screens.LoginScreen
 import com.aasjunior.mediapickersuite.ui.theme.MediaPickerSuiteTheme
 import com.aasjunior.mediapickersuite.ui.viewmodel.validations.EmailState
 
@@ -33,31 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Column {
-                        ImagePicker()
-                        VideoPicker()
-                        DocumentPicker()
-
-                        var phone by rememberSaveable { mutableStateOf("") }
-                        var email by rememberSaveable { mutableStateOf("") }
-                        var password by rememberSaveable { mutableStateOf("") }
-
-                        PhoneTextField(
-                            phone = phone,
-                            onValueChange = { newPhone -> phone = newPhone }
-                        )
-                        EmailTextField(
-                            email = email,
-                            onValueChange = { newEmail -> email = newEmail }
-                        )
-                        PasswordTextField(
-                            password = password,
-                            onValueChange = { newPassword -> password = newPassword }
-                        )
-
-                        ConfirmPassword()
-                    }
-                    
+                    LoginScreen()
                 }
             }
         }
