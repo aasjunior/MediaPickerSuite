@@ -1,6 +1,6 @@
 package com.aasjunior.mediapickersuite.domain.model.login
 
 data class LoginRequest(
-    val email: String,
+    val username: String,
     val password: String
 )

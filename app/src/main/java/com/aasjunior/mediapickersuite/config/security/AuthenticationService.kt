@@ -26,8 +26,9 @@ class AuthenticationService(private val securePreferences: SecurePreferences) {
                 }
 
             }else{
-                Log.e("AuthenticationService", response.errorBody().toString())
-                LoginState.Error(response.errorBody().toString())
+                val errorBody = response.errorBody()?.string()
+                Log.e("AuthenticationService", errorBody ?: "Unknown error")
+                LoginState.Error(errorBody ?: "Unknown error")
             }
         }catch(e: Exception){
             Log.e("AuthenticationService", e.message ?: "Unknown error")

@@ -8,9 +8,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
-import com.aasjunior.mediapickersuite.config.security.AuthenticationService
-import com.aasjunior.mediapickersuite.config.security.SecurePreferences
+import com.aasjunior.mediapickersuite.config.Injector
 import com.aasjunior.mediapickersuite.ui.screens.LoginScreen
+import com.aasjunior.mediapickersuite.ui.screens.RegisterScreen
 import com.aasjunior.mediapickersuite.ui.theme.MediaPickerSuiteTheme
 import com.aasjunior.mediapickersuite.ui.viewmodel.GenericViewModelFactory
 import com.aasjunior.mediapickersuite.ui.viewmodel.LoginViewModel
@@ -19,8 +19,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val securePreferences = SecurePreferences(this)
-        val authService = AuthenticationService(securePreferences)
+        val authService = Injector.provideAuthService()
         val factory = GenericViewModelFactory { LoginViewModel(authService) }
         val loginViewModel = ViewModelProvider(this, factory)
             .get(LoginViewModel::class.java)
@@ -32,7 +31,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoginScreen(loginViewModel)
+                    // LoginScreen(loginViewModel)
+                    RegisterScreen()
                 }
             }
         }
