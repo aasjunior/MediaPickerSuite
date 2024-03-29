@@ -1,6 +1,7 @@
 package com.aasjunior.mediapickersuite.ui.components.settings
 
 import android.app.ActivityManager
+import android.content.Context
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -43,20 +44,27 @@ fun LanguageSelector(){
                     currentLanguage.value = language
                     languageManager.currentLanguage = language
                     expanded.value = false
-                    val activityManager = ContextCompat
-                        .getSystemService(context, ActivityManager::class.java)
-                    val appTasks = activityManager?.appTasks
-                    appTasks?.get(0)?.finishAndRemoveTask()
-                    appTasks?.get(0)?.startActivity(
-                        context,
-                        context.packageManager
-                            .getLaunchIntentForPackage(
-                                context.packageName
-                            ),
-                        null
-                    )
+
+                    restartActivity(context)
                 }
             )
         }
     }
+}
+
+private fun restartActivity(context: Context){
+    val activityManager = ContextCompat
+        .getSystemService(context, ActivityManager::class.java)
+
+    val appTasks = activityManager?.appTasks
+
+    appTasks?.get(0)?.finishAndRemoveTask()
+    appTasks?.get(0)?.startActivity(
+        context,
+        context.packageManager
+            .getLaunchIntentForPackage(
+                context.packageName
+            ),
+        null
+    )
 }
