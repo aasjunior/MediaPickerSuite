@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">MediaPickerSuite</string>
     <string name="hello_world">Olá Mundo!</string>
+    <string name="change_language">Selecione o idioma</string>
 </resources>

@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.aasjunior.mediapickersuite.R
+import com.aasjunior.mediapickersuite.ui.components.settings.LanguageSelector
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,6 +27,8 @@ fun HelloScreen() {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ){
             Text(text = stringResource(id = R.string.hello_world))
+
+            LanguageSelector()
         }
     }
 }

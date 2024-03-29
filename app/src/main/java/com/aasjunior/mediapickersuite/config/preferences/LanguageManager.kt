@@ -1,6 +1,5 @@
 package com.aasjunior.mediapickersuite.config.preferences
 
-import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import com.aasjunior.mediapickersuite.domain.constants.Language
