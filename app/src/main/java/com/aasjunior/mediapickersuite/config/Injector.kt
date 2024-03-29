@@ -1,6 +1,7 @@
 package com.aasjunior.mediapickersuite.config
 
 import android.content.Context
+import com.aasjunior.mediapickersuite.config.preferences.LanguageManager
 import com.aasjunior.mediapickersuite.config.retrofit.RetrofitClient
 import com.aasjunior.mediapickersuite.config.security.AuthenticationService
 import com.aasjunior.mediapickersuite.config.security.SecurePreferences
