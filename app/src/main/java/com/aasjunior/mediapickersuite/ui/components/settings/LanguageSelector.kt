@@ -14,7 +14,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
 import com.aasjunior.mediapickersuite.R
 import com.aasjunior.mediapickersuite.config.Injector
-import com.aasjunior.mediapickersuite.config.preferences.LanguageManager
 import com.aasjunior.mediapickersuite.domain.constants.Language
 
 @Composable
