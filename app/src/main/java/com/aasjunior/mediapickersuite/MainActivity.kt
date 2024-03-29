@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
 import com.aasjunior.mediapickersuite.config.Injector
+import com.aasjunior.mediapickersuite.ui.screens.HelloScreen
 import com.aasjunior.mediapickersuite.ui.screens.LoginScreen
 import com.aasjunior.mediapickersuite.ui.screens.RegisterScreen
 import com.aasjunior.mediapickersuite.ui.theme.MediaPickerSuiteTheme
@@ -32,7 +33,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     // LoginScreen(loginViewModel)
-                    RegisterScreen()
+                    // RegisterScreen()
+                    HelloScreen()
                 }
             }
         }

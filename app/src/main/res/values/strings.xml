@@ -1,31 +1,4 @@
 <resources>
     <string name="app_name">MediaPickerSuite</string>
-
-    <!-- Tela de Login -->
-    <string name="login_welcome">Bem vindo</string>
-    <string name="login_prompt">Faça o login na sua conta</string>
-    <string name="login_forgive">Esqueceu a senha?</string>
-    <string name="login_forgive_link">Recupere aui</string>
-    <string name="login_register">Não tem uma conta?</string>
-    <string name="login_register_link">Cadastre-se</string>
-
-    <!-- Loading -->
-    <string name="loading_title">Carregando</string>
-    <string name="loading_message">Estamos preparando tudo para você</string>
-
-    <!-- Começar -->
-    <string name="begin_title">Vamos começar!</string>
-    <string name="begin_message_01">Tudo pronto, vamos começar!</string>
-    <string name="begin_message_02">Junte-se nessa missão com SOFIA.</string>
-    <string name="begin_button">Começar</string>
-
-    <!-- Tela Inicial -->
-    <string name="main_welcome">Olá, %s!</string>
-    <string name="main_description">Veja as principais descobertas no tratamento do TEA!</string>
-    <string name="main_more_link">Saiba mais</string>
-    <string name="main_new_btn">Nova Consulta</string>
-    <string name="main_list_btn">Listar Pacientes</string>
-    <string name="main_register_btn">Cadastrar Paciente</string>
-
-
+    <string name="hello_world">Hello World!</string>
 </resources>
