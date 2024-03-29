@@ -12,30 +12,34 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
 import com.aasjunior.mediapickersuite.R
+import com.aasjunior.mediapickersuite.config.Injector
 import com.aasjunior.mediapickersuite.config.preferences.LanguageManager
 import com.aasjunior.mediapickersuite.domain.constants.Language
 
 @Composable
 fun LanguageSelector(){
     val context = LocalContext.current
-    val languageManager = remember { LanguageManager(context) }
+    val languageManager = remember { Injector.provideLanguageManager() }
     val currentLanguage = remember { mutableStateOf(languageManager.currentLanguage) }
     val expanded = remember { mutableStateOf(false) }
 
     Button(onClick = { expanded.value = true }) {
         Text(text = stringResource(id = R.string.change_language))
     }
-    
+
     DropdownMenu(
-        expanded = expanded.value, 
+        expanded = expanded.value,
         onDismissRequest = { expanded.value = false }
     ) {
         Language.values().forEach { language ->
             DropdownMenuItem(
-                text = { 
+                text = {
                        Text(text = language.name)
                 },
                 onClick = {
+                    if(language == currentLanguage.value)
+                        return@DropdownMenuItem
+
                     currentLanguage.value = language
                     languageManager.currentLanguage = language
                     expanded.value = false
@@ -45,8 +49,7 @@ fun LanguageSelector(){
                     appTasks?.get(0)?.finishAndRemoveTask()
                     appTasks?.get(0)?.startActivity(
                         context,
-                        context
-                            .packageManager
+                        context.packageManager
                             .getLaunchIntentForPackage(
                                 context.packageName
                             ),
