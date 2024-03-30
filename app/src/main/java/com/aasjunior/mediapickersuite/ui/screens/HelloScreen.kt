@@ -14,12 +14,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.aasjunior.mediapickersuite.R
+import com.aasjunior.mediapickersuite.ui.components.contents.appbar.AppBar
 import com.aasjunior.mediapickersuite.ui.components.settings.LanguageSelector
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HelloScreen(drawerState: DrawerState) {
-    Scaffold { innerPadding ->
+    Scaffold(
+        topBar = { AppBar(drawerState) }
+    ) { innerPadding ->
         Column(
             modifier = Modifier
                 .padding(innerPadding)

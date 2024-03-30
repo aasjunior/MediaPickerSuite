@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.aasjunior.mediapickersuite.domain.model.user.UserRole
+import com.aasjunior.mediapickersuite.ui.components.contents.appbar.AppBar
 import com.aasjunior.mediapickersuite.ui.components.form.inputs.ConfirmPassword
 import com.aasjunior.mediapickersuite.ui.components.form.inputs.CustomOutlinedTextField
 import com.aasjunior.mediapickersuite.ui.components.form.inputs.EmailTextField
@@ -29,7 +30,9 @@ import com.aasjunior.mediapickersuite.ui.components.form.inputs.EmailTextField
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(drawerState: DrawerState) {
-    Scaffold { innerPadding ->
+    Scaffold(
+        topBar = { AppBar(drawerState) }
+    ) { innerPadding ->
         Column(
             modifier = Modifier
                 .padding(innerPadding)
