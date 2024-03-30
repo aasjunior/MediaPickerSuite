@@ -17,6 +17,7 @@ import com.aasjunior.mediapickersuite.ui.navigation.introGraph
 import com.aasjunior.mediapickersuite.ui.navigation.mainGraph
 import com.aasjunior.mediapickersuite.ui.navigation.routes.MainNavOptions
 import com.aasjunior.mediapickersuite.ui.navigation.routes.NavRoutes
+import com.aasjunior.mediapickersuite.ui.screens.SplashScreen
 import com.aasjunior.mediapickersuite.ui.theme.MediaPickerSuiteTheme
 import com.aasjunior.mediapickersuite.ui.viewmodel.LoginViewModel
 
@@ -30,7 +31,7 @@ fun MainCompose(
     loginViewModel: LoginViewModel
 ){
     var isLoggedIn = loginViewModel.isLoggedIn()
-        .collectAsState(initial = false)
+        .collectAsState(initial = null)
 
     MediaPickerSuiteTheme {
         Surface {
@@ -57,14 +58,24 @@ fun MainCompose(
                     }
                 }
             ) {
-                NavHost(
-                    navController,
-                    startDestination =
-                        if (isLoggedIn.value) NavRoutes.MainRoute.name
-                        else NavRoutes.IntroRoute.name
-                ){
-                    introGraph(navController, loginViewModel)
-                    mainGraph(drawerState, loginViewModel)
+                when(isLoggedIn.value){
+                    null -> SplashScreen()
+
+                    true -> NavHost(
+                        navController,
+                        startDestination = NavRoutes.MainRoute.name
+                    ){
+                        introGraph(navController, loginViewModel)
+                        mainGraph(drawerState, loginViewModel)
+                    }
+
+                    false -> NavHost(
+                        navController,
+                        startDestination = NavRoutes.IntroRoute.name
+                    ){
+                        introGraph(navController, loginViewModel)
+                        mainGraph(drawerState, loginViewModel)
+                    }
                 }
             }
         }
