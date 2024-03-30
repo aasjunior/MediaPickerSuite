@@ -8,11 +8,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import com.aasjunior.mediapickersuite.domain.model.login.LoginState
 import com.aasjunior.mediapickersuite.ui.components.contents.appdrawer.AppDrawerContent
 import com.aasjunior.mediapickersuite.ui.components.contents.appdrawer.DrawerParams
 import com.aasjunior.mediapickersuite.ui.navigation.introGraph
@@ -28,9 +26,11 @@ fun MainCompose(
     navController: NavHostController = rememberNavController(),
     drawerState: DrawerState = rememberDrawerState(
         initialValue = DrawerValue.Closed
-    )
+    ),
+    loginViewModel: LoginViewModel
 ){
-    val loginViewModel: LoginViewModel = viewModel()
+    var isLoggedIn = loginViewModel.isLoggedIn()
+        .collectAsState(initial = false)
 
     MediaPickerSuiteTheme {
         Surface {
@@ -57,15 +57,14 @@ fun MainCompose(
                     }
                 }
             ) {
-                val isLoggedIn = loginViewModel.loginState.collectAsState()
                 NavHost(
                     navController,
                     startDestination =
-                        if (isLoggedIn.value is LoginState.Success) NavRoutes.MainRoute.name
+                        if (isLoggedIn.value) NavRoutes.MainRoute.name
                         else NavRoutes.IntroRoute.name
                 ){
                     introGraph(navController, loginViewModel)
-                    mainGraph(drawerState)
+                    mainGraph(drawerState, loginViewModel)
                 }
             }
         }

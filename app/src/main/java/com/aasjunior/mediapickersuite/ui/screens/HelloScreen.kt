@@ -16,10 +16,14 @@ import androidx.compose.ui.unit.dp
 import com.aasjunior.mediapickersuite.R
 import com.aasjunior.mediapickersuite.ui.components.contents.appbar.AppBar
 import com.aasjunior.mediapickersuite.ui.components.settings.LanguageSelector
+import com.aasjunior.mediapickersuite.ui.viewmodel.LoginViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HelloScreen(drawerState: DrawerState) {
+fun HelloScreen(
+    drawerState: DrawerState,
+    loginViewModel: LoginViewModel
+) {
     Scaffold(
         topBar = { AppBar(drawerState) }
     ) { innerPadding ->
@@ -32,7 +36,7 @@ fun HelloScreen(drawerState: DrawerState) {
         ){
             Text(text = stringResource(id = R.string.hello_world))
 
-            LanguageSelector()
+            LanguageSelector(loginViewModel)
         }
     }
 }

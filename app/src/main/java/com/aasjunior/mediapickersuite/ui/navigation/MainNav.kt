@@ -9,15 +9,16 @@ import com.aasjunior.mediapickersuite.ui.navigation.routes.MainNavOptions
 import com.aasjunior.mediapickersuite.ui.navigation.routes.NavRoutes
 import com.aasjunior.mediapickersuite.ui.screens.HelloScreen
 import com.aasjunior.mediapickersuite.ui.screens.RegisterScreen
+import com.aasjunior.mediapickersuite.ui.viewmodel.LoginViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
-fun NavGraphBuilder.mainGraph(drawerState: DrawerState){
+fun NavGraphBuilder.mainGraph(drawerState: DrawerState, loginViewModel: LoginViewModel){
     navigation(
         startDestination = MainNavOptions.HelloScreen.name,
         route = NavRoutes.MainRoute.name
     ){
         composable(MainNavOptions.HelloScreen.name){
-            HelloScreen(drawerState)
+            HelloScreen(drawerState, loginViewModel)
         }
         composable(MainNavOptions.RegisterScreen.name){
             RegisterScreen(drawerState)

@@ -22,7 +22,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val authService = Injector.provideAuthService()
-        val factory = GenericViewModelFactory { LoginViewModel(authService) }
+        val securePreferences = Injector.provideSecurePreferences()
+        val factory = GenericViewModelFactory {
+            LoginViewModel(authService, securePreferences)
+        }
         val loginViewModel = ViewModelProvider(this, factory)
             .get(LoginViewModel::class.java)
 
@@ -34,7 +37,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     LocalizedContent {
-                        MainCompose()
+                        MainCompose(loginViewModel = loginViewModel)
                     }
                 }
             }
