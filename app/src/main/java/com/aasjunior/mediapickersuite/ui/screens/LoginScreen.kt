@@ -18,6 +18,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.aasjunior.mediapickersuite.domain.model.login.LoginState
 import com.aasjunior.mediapickersuite.ui.components.form.inputs.EmailTextField
 import com.aasjunior.mediapickersuite.ui.components.form.inputs.PasswordTextField
@@ -25,7 +26,10 @@ import com.aasjunior.mediapickersuite.ui.viewmodel.LoginViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(loginViewModel: LoginViewModel) {
+fun LoginScreen(
+    navController: NavController,
+    loginViewModel: LoginViewModel
+) {
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
 

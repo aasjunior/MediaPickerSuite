@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,7 +18,7 @@ import com.aasjunior.mediapickersuite.ui.components.settings.LanguageSelector
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HelloScreen() {
+fun HelloScreen(drawerState: DrawerState) {
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier

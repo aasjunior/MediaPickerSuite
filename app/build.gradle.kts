@@ -80,4 +80,6 @@ dependencies {
     // observeAsState
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07")
 
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.8.0-alpha05")
 }
